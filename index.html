@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff0f5">
+  <meta name="description" content="Tủ skincare và lịch chăm sóc da cá nhân của bạn.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Skincare">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Chăm da cho vợ</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" data-go="home" aria-label="Skincare của mình">
+        <span class="brand-mark">♡</span><span>Chăm da cho vợ<small>SKINCARE CORNER</small></span>
+      </a>
+      <button class="icon-button" id="install-button" hidden aria-label="Cài ứng dụng" title="Cài ứng dụng">↧</button>
+    </header>
+
+    <main>
+      <section class="view active" id="home-view" aria-labelledby="home-title">
+        <div class="menu-welcome"><div><span class="eyebrow">MỘT CHÚT YÊU THƯƠNG MỖI NGÀY</span><h1 id="home-title">Góc nhỏ chăm da<br><em>của nàng ✿</em></h1><p>Chậm rãi thôi, hôm nay mình lại xinh thêm một chút.</p></div><div class="welcome-doodle" aria-hidden="true">☁️<br><span>🌸</span></div></div>
+        <div class="menu-grid">
+          <button class="menu-tile tile-routine" data-view="today"><span class="tile-icon">🫧</span><span class="tile-label">Lịch skincare</span><small>Sáng & tối hôm nay</small><span class="tile-arrow">↗</span><span class="tile-doodle">✿</span></button>
+          <button class="menu-tile tile-cabinet" data-view="products"><span class="tile-icon">🧴</span><span class="tile-label">Tủ mỹ phẩm</span><small><span id="menu-product-count">14</span> món đang yêu</small><span class="tile-arrow">↗</span><span class="tile-doodle">♡</span></button>
+          <button class="menu-tile tile-week" data-view="routine"><span class="tile-icon">🗓️</span><span class="tile-label">Lịch cả tuần</span><small>7 ngày chăm da xinh</small><span class="tile-arrow">↗</span><span class="tile-doodle">✧</span></button>
+          <button class="menu-tile tile-settings" data-view="settings"><span class="tile-icon">⏰</span><span class="tile-label">Cài đặt & nhắc nhở</span><small>Đặt giờ yêu thương</small><span class="tile-arrow">↗</span><span class="tile-doodle">♡</span></button>
+        </div>
+        <button class="home-today" data-view="today"><span class="home-today-flower">🌷</span><span><small>HÔM NAY · <span id="home-day"></span></small><strong id="home-focus"></strong></span><span class="home-today-arrow">Xem lịch&nbsp; →</span></button>
+        <p class="home-note">made with ♡ just for your skin</p>
+      </section>
+
+      <section class="view" id="today-view" aria-labelledby="today-title">
+        <div class="hero">
+          <div><span class="eyebrow" id="today-date"></span><h1 id="today-title">Chăm da<br><em>theo nhịp của mình.</em></h1></div>
+          <div class="hero-flower" aria-hidden="true">✿</div>
+        </div>
+        <div class="today-focus"><span class="focus-dot"></span><span id="today-focus-text"></span><button class="text-button" data-go="routine">Xem tuần <span>↗</span></button></div>
+        <div class="routine-panels">
+          <article class="routine-card morning-card">
+            <div class="card-heading"><div><span class="period-icon">☼</span><span class="eyebrow">BUỔI SÁNG</span></div><span class="step-count" id="morning-count"></span></div>
+            <h2>Khởi đầu nhẹ nhàng</h2><div class="checklist" id="morning-list"></div>
+          </article>
+          <article class="routine-card evening-card">
+            <div class="card-heading"><div><span class="period-icon moon">☾</span><span class="eyebrow">BUỔI TỐI</span></div><span class="step-count" id="evening-count"></span></div>
+            <h2>Thời gian cho làn da</h2><div class="checklist" id="evening-list"></div>
+          </article>
+        </div>
+        <div class="today-footer"><span>Chậm một chút cũng không sao.</span><span>♡</span></div>
+      </section>
+
+      <section class="view" id="products-view" aria-labelledby="products-title">
+        <div class="page-heading"><div><span class="eyebrow">GÓC NHỎ CỦA BẠN</span><h1 id="products-title">Tủ skincare</h1></div><button class="primary-button" id="add-product">＋ <span>Thêm món</span></button></div>
+        <div class="inventory-summary" id="inventory-summary"></div>
+        <label class="search-box"><span>⌕</span><input id="search-products" type="search" placeholder="Tìm món đồ trong tủ..." autocomplete="off"></label>
+        <div class="cabinet" id="product-list"></div>
+        <p class="empty-state" id="product-empty" hidden>Chưa có sản phẩm này. Thử tìm tên khác nhé.</p>
+      </section>
+
+      <section class="view" id="routine-view" aria-labelledby="routine-title">
+        <div class="page-heading"><div><span class="eyebrow">THÓI QUEN CỦA MÌNH</span><h1 id="routine-title">Lịch 7 ngày</h1></div><span class="week-stamp">MỖI TUẦN<br>♡</span></div>
+        <p class="section-intro">Một lịch trình chăm sóc da với những khoảng nghỉ và phục hồi.</p>
+        <div class="week-list" id="week-list"></div>
+      </section>
+
+      <section class="view" id="settings-view" aria-labelledby="settings-title">
+        <div class="page-heading"><div><span class="eyebrow">NHẸ NHÀNG NHẮC MÌNH</span><h1 id="settings-title">Nhắc nhở</h1></div><span class="settings-flower">✿</span></div>
+        <article class="settings-card">
+          <div class="settings-copy"><div class="settings-icon">◷</div><div><h2>Giờ chăm sóc da</h2><p>Chọn giờ nhắc buổi sáng và buổi tối.</p></div></div>
+          <label class="time-row"><span>Buổi sáng</span><input type="time" id="morning-time" value="07:00"></label>
+          <label class="time-row"><span>Buổi tối</span><input type="time" id="evening-time" value="21:00"></label>
+          <button class="primary-button full-button" id="export-calendar">Thêm nhắc nhở vào Lịch iPhone <span>↗</span></button>
+          <p class="settings-note">Tạo hai lịch lặp hằng tuần có chuông báo. Mở tệp tải về trên iPhone và thêm lịch vào ứng dụng Lịch. GitHub Pages không thể gửi thông báo nền độc lập.</p>
+        </article>
+        <article class="install-card"><span class="install-sparkle">✳</span><div><h2>Đưa app ra màn hình chính</h2><p>Mở trang này trong Safari, chạm nút Chia sẻ rồi chọn <strong>Thêm vào màn hình chính</strong>.</p></div></article>
+        <p class="privacy-note">Dữ liệu chỉ lưu trong trình duyệt trên thiết bị này. Không cần tài khoản.</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Điều hướng chính">
+      <button class="nav-item selected" data-view="home"><span>⌂</span><small>Menu</small></button>
+      <button class="nav-item" data-view="products"><span>🧴</span><small>Tủ đồ</small></button>
+      <button class="nav-item" data-view="routine"><span>🗓</span><small>Cả tuần</small></button>
+      <button class="nav-item" data-view="settings"><span>♡</span><small>Cài đặt</small></button>
+    </nav>
+  </div>
+
+  <dialog id="product-dialog" class="modal">
+    <form id="product-form" method="dialog">
+      <div class="modal-heading"><div><span class="eyebrow">TỦ SKINCARE CỦA MÌNH</span><h2 id="product-form-title">Thêm sản phẩm</h2></div><button type="button" class="close-button" data-close="product-dialog" aria-label="Đóng">×</button></div>
+      <input type="hidden" id="product-id">
+      <label>Tên sản phẩm<input id="product-name" required maxlength="100" placeholder="Ví dụ: Toner Klairs"></label>
+      <label>Công dụng<input id="product-detail" maxlength="160" placeholder="Cấp ẩm, làm dịu..."></label>
+      <label>Buổi dùng / tần suất<input id="product-usage" maxlength="140" placeholder="Sáng & tối · Hàng ngày"></label>
+      <label>Loại mỹ phẩm<select id="product-category"><option value="Tẩy trang">Tẩy trang</option><option value="Sữa rửa mặt">Sữa rửa mặt</option><option value="Toner">Toner</option><option value="Serum">Serum</option><option value="Mặt nạ">Mặt nạ</option><option value="Kem dưỡng">Kem dưỡng</option><option value="Chống nắng">Chống nắng</option></select></label>
+      <label>Ghi chú<input id="product-note" maxlength="180" placeholder="Ghi chú của bạn"></label>
+      <label class="owned-toggle"><input id="product-owned" type="checkbox" checked><span>Đang có trong tủ</span></label>
+      <div class="modal-actions"><button type="button" class="delete-button" id="delete-product" hidden>Xóa sản phẩm</button><button class="primary-button" type="submit">Lưu sản phẩm</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="routine-dialog" class="modal routine-modal">
+    <form id="routine-form" method="dialog">
+      <div class="modal-heading"><div><span class="eyebrow">CHỈNH SỬA THÓI QUEN</span><h2 id="routine-form-title"></h2></div><button type="button" class="close-button" data-close="routine-dialog" aria-label="Đóng">×</button></div>
+      <input type="hidden" id="routine-day-index">
+      <label>Trọng tâm trong ngày<input id="routine-focus" maxlength="100"></label>
+      <label>Buổi sáng <small>· mỗi bước một dòng</small><textarea id="routine-morning" rows="6"></textarea></label>
+      <label>Buổi tối <small>· mỗi bước một dòng</small><textarea id="routine-evening" rows="8"></textarea></label>
+      <div class="modal-actions"><span></span><button class="primary-button" type="submit">Lưu lịch</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
